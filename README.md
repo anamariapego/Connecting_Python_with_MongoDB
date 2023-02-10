@@ -10,7 +10,7 @@
 
 * Collections exportadas: [https://github.com/anamariapego/Connecting_Python_with_MongoDB/tree/main/01-CodigoFonte/00-DataSets](https://github.com/anamariapego/Connecting_Python_with_MongoDB/tree/main/01-CodigoFonte/00-DataSets)
 
- * Arquivo World: [https://github.com/anamariapego/Connecting_Python_with_MongoDB/tree/main/02-Documentos_Refer%C3%AAncias](https://github.com/anamariapego/Connecting_Python_with_MongoDB/tree/main/02-Documentos_Refer%C3%AAncias)
+ * Arquivo World: [https://github.com/anamariapego/Connecting_Python_with_MongoDB/blob/main/02-DocumentosReferencias/RespostasAvaliacaoDataOps.docx](https://github.com/anamariapego/Connecting_Python_with_MongoDB/blob/main/02-DocumentosReferencias/RespostasAvaliacaoDataOps.docx)
 
 <!-- links -->
 
