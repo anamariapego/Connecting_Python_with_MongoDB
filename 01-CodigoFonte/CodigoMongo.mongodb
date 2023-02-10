@@ -1,0 +1,108 @@
+
+// Criando um banco MongoDB
+
+> use MontadoraCarro
+// switched to db MontadoraCarro
+
+// Criando as Collections
+
+> db.createCollection("Carros")
+// { "ok" : 1 }
+> db.createCollection("Montadoras")
+// { "ok" : 1 }
+
+// Verificando a criação das coleções
+
+> show collections
+// Carros
+// Montadoras
+
+// Inserção dos dados com python // 
+
+// Verificando se os dados foram inseridos
+
+> db.Carros.find()
+// { "_id" : ObjectId("63e6450889fa696e4e063662"), "Carro" : "Onix", "Cor" : "Prata", "Montadora" : "Chevrolet" }
+// { "_id" : ObjectId("63e6450889fa696e4e063663"), "Carro" : "Polo", "Cor" : "Branco", "Montadora" : "Volkswagen" }
+// { "_id" : ObjectId("63e6450889fa696e4e063664"), "Carro" : "Sandero", "Cor" : "Prata", "Montadora" : "Renault" }
+// { "_id" : ObjectId("63e6450889fa696e4e063665"), "Carro" : "Fiesta", "Cor" : "Vermelho", "Montadora" : "Ford" }
+// { "_id" : ObjectId("63e6450889fa696e4e063666"), "Carro" : "City", "Cor" : "Preto", "Montadora" : "Honda" }
+
+> db.Montadoras.find()
+// { "_id" : ObjectId("63e57f3d350df37e0d84568c"), "Montadora" : "Chevrolet", "Pais" : "EUA" }
+// { "_id" : ObjectId("63e57f3d350df37e0d84568d"), "Montadora" : "Volkswagen", "Pais" : "Alemanhã" }
+// { "_id" : ObjectId("63e57f3d350df37e0d84568e"), "Montadora" : "Renault", "Pais" : "França" }
+// { "_id" : ObjectId("63e57f3d350df37e0d84568f"), "Montadora" : "Ford", "Pais" : "EUA" }
+// { "_id" : ObjectId("63e57f3d350df37e0d845690"), "Montadora" : "Honda", "Pais" : "Japão" }
+
+
+// Relacionando as collections e extraindo o país
+
+db.Carros.aggregate([
+  {
+    $lookup: {
+      from: "Montadoras",
+      localField: "Montadora",
+      foreignField: "Montadora",
+      as: "montadora_carro"
+    }
+  },
+  {
+     "$unwind": "$montadora_carro"
+  },
+  {
+    $project: {
+      _id: "$_id",
+      Carro: "$Carro",
+      Cor: "$Cor",
+      Montadora: "$Montadora",
+      Pais: "$montadora_carro.Pais"
+    }
+  }
+])
+
+// { "_id" : ObjectId("63e6450889fa696e4e063662"), "Carro" : "Onix", "Cor" : "Prata", "Montadora" : "Chevrolet", "Pais" : "EUA" }
+// { "_id" : ObjectId("63e6450889fa696e4e063663"), "Carro" : "Polo", "Cor" : "Branco", "Montadora" : "Volkswagen", "Pais" : "Alemanhã" }
+// { "_id" : ObjectId("63e6450889fa696e4e063664"), "Carro" : "Sandero", "Cor" : "Prata", "Montadora" : "Renault", "Pais" : "França" }
+// { "_id" : ObjectId("63e6450889fa696e4e063665"), "Carro" : "Fiesta", "Cor" : "Vermelho", "Montadora" : "Ford", "Pais" : "EUA" }
+// { "_id" : ObjectId("63e6450889fa696e4e063666"), "Carro" : "City", "Cor" : "Preto", "Montadora" : "Honda", "Pais" : "Japão" }
+
+// Agrupando as informações pelo país
+
+
+db.Carros.aggregate([
+  {
+    $lookup: {
+      from: "Montadoras",
+      localField: "Montadora",
+      foreignField: "Montadora",
+      as: "montadora_carro"
+    }
+  },
+  {
+     "$unwind": "$montadora_carro"
+  },
+  {
+    $group: {
+      _id: "$montadora_carro.Pais",
+      Carros: { $sum: 1 }
+    }
+  }
+])
+
+// { "_id" : "Japão", "Carros" : 1 }
+// { "_id" : "EUA", "Carros" : 2 }
+// { "_id" : "França", "Carros" : 1 }
+// { "_id" : "Alemanhã", "Carros" : 1 }
+
+
+
+// Exportando as collections - as exportações eu fiz via terminal 
+
+PS C:\Projetos\Connecting_Python_with_MongoDB> mongoexport -c Carros -d MontadoraCarro -o CarrosInfo.json
+2023-02-10T10:43:01.333-0300    connected to: mongodb://localhost/
+2023-02-10T10:43:01.357-0300    exported 5 records
+
+PS C:\Projetos\Connecting_Python_with_MongoDB> mongoexport -c Montadoras -d MontadoraCarro -o MontadorasInfo.json
+2023-02-10T10:43:54.539-0300    connected to: mongodb://localhost/
+2023-02-10T10:43:54.559-0300    exported 5 records
