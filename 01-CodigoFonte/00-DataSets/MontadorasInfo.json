@@ -1,0 +1,5 @@
+{"_id":{"$oid":"63e6450889fa696e4e063667"},"Montadora":"Chevrolet","Pais":"EUA"}
+{"_id":{"$oid":"63e6450889fa696e4e063668"},"Montadora":"Volkswagen","Pais":"Alemanhã"}
+{"_id":{"$oid":"63e6450889fa696e4e063669"},"Montadora":"Renault","Pais":"França"}
+{"_id":{"$oid":"63e6450889fa696e4e06366a"},"Montadora":"Ford","Pais":"EUA"}
+{"_id":{"$oid":"63e6450889fa696e4e06366b"},"Montadora":"Honda","Pais":"Japão"}
