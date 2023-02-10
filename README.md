@@ -2,9 +2,16 @@
 
 [![MIT License][license-shield]][license-url]
 
-## Localização dos arquivos 
+## <img src="https://user-images.githubusercontent.com/57241391/218114627-2ca4f9c4-104a-4a7f-b9ff-847d68e2101a.png" height="30"> Localização dos arquivos 
 
-* Arquivo Python: []()
+* Arquivo Python: [https://github.com/anamariapego/Connecting_Python_with_MongoDB/blob/main/01-CodigoFonte/Connecting_Python_with_MongoDB.ipynb](https://github.com/anamariapego/Connecting_Python_with_MongoDB/blob/main/01-CodigoFonte/Connecting_Python_with_MongoDB.ipynb)
+
+* Arquivo MongoDB: [https://github.com/anamariapego/Connecting_Python_with_MongoDB/blob/main/01-CodigoFonte/CodigoMongo.mongodb](https://github.com/anamariapego/Connecting_Python_with_MongoDB/blob/main/01-CodigoFonte/CodigoMongo.mongodb)
+
+* Collections exportadas: [https://github.com/anamariapego/Connecting_Python_with_MongoDB/tree/main/01-CodigoFonte/00-DataSets](https://github.com/anamariapego/Connecting_Python_with_MongoDB/tree/main/01-CodigoFonte/00-DataSets)
+
+ * Arquivo World: [https://github.com/anamariapego/Connecting_Python_with_MongoDB/tree/main/02-Documentos_Refer%C3%AAncias](https://github.com/anamariapego/Connecting_Python_with_MongoDB/tree/main/02-Documentos_Refer%C3%AAncias)
+
 <!-- links -->
 
 [license-shield]: https://img.shields.io/github/license/anamariapego/House_Price_Predicition?color=brightgreen&style=flat-square
